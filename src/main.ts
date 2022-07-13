@@ -5,6 +5,7 @@ import { createPinia } from 'pinia'
 
 import 'uno.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
+import '@/styles/app.scss'
 
 const pinia = createPinia()
 
