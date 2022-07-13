@@ -8,13 +8,11 @@ import Sider from './sider.vue'
 const router = useRouter()
 const allRoutes = computed(() => router.options.routes)
 const store = appStore()
-console.log(store.sidebarCollapse);
-
 
 </script>
 
 <template>
-  <el-menu default-active="2" class="el-menu-vertical-demo" router :collapse="store.sidebarCollapse">
+  <el-menu default-active="2" router :collapse="store.sidebarCollapse">
     <Sider v-for="(routes, index) in allRoutes" :key="index" :routes="routes" />
   </el-menu>
 </template>
