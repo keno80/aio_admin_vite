@@ -11,30 +11,35 @@ const props = defineProps({
   }
 })
 
-const children = props.routes.children
+const routes = props.routes
 
 </script>
 
 <template>
-  <div v-if="children.length <= 1">
-    <el-menu-item :index="children[0].path">
-      <div :class="children[0].meta.icon" px-2></div>
-      <span v-show="!props.hideTitle" overflow-hidden>{{ children[0].meta.title }}</span>
-    </el-menu-item>
-  </div>
+  <template v-if="routes.children.length <= 1">
+    <template v-if="routes.meta.hidden !== true">
+      <el-menu-item :index="props.routes.path">
+        <div :class="[routes.children.length !== 0 ? routes.children[0].meta.icon : routes.meta.icon]" px-2></div>
+        <span v-show="!props.hideTitle" overflow-hidden>
+          {{ routes.children.length !== 0 ? routes.children[0].meta.title : routes.meta.title }}
+        </span>
+      </el-menu-item>
+    </template>
 
-  <div v-else>
-    <el-sub-menu :index="props.routes.path" :class="{ sub: props.hideTitle }">
+  </template>
+
+  <template v-else>
+    <el-sub-menu :index="routes.path" :class="{ sub: props.hideTitle }">
       <template #title>
-        <div :class="props.routes.meta.icon" px-2></div>
-        <span v-show="!props.hideTitle" overflow-hidden>{{ props.routes.meta.title }}</span>
+        <div :class="routes.meta.icon" px-2></div>
+        <span v-show="!props.hideTitle" overflow-hidden>{{ routes.meta.title }}</span>
       </template>
-      <el-menu-item v-for="child in props.routes.children" :index="child.path">
+      <el-menu-item v-for="child in routes.children" :index="child.path">
         <div :class="child.meta.icon" px-2></div>
         <span>{{ child.meta.title }}</span>
       </el-menu-item>
     </el-sub-menu>
-  </div>
+  </template>
 </template>
 
 <style lang="scss" scoped>
