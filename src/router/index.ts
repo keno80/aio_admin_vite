@@ -7,14 +7,28 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: Layout,
-    redirect: '/home',
-    meta: {title: '博客后台管理'},
+    redirect: '/dashboard',
+    meta: {title: 'Dashboard'},
     children: [
       {
-        path: 'home',
-        name: 'home',
-        component: () => import('@/views/home/index.vue'),
-        meta: {title: '文章管理', icon: 'i-carbon:sun'},
+        path: '/dashboard',
+        name: 'dashboard',
+        component: () => import('@/views/dashboard/index.vue'),
+        meta: {title: 'Dashboard', icon: 'i-carbon:dashboard'},
+      }
+    ]
+  },
+  {
+    path: '/blog',
+    component: Layout,
+    redirect: '/blog/article',
+    meta: {title: '博客后台管理', icon: 'i-carbon:sun'},
+    children: [
+      {
+        path: '/blog/article',
+        name: 'article',
+        component: () => import('@/views/blog/index.vue'),
+        meta: {title: '文章列表', icon: 'i-carbon:sun'},
       }
     ]
   },
