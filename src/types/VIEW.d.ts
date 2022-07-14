@@ -4,4 +4,9 @@ declare namespace VIEW {
     path: string;
     icon: any;
   }
+
+  export type LoginForm = {
+    username: string;
+    password: string;
+  }
 }
