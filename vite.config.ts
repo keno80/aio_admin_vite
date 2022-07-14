@@ -15,7 +15,13 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()]
     }),
     Components({
-      resolvers: [ElementPlusResolver()]
+      resolvers: [
+        ElementPlusResolver({
+          importStyle: "sass",
+          directives: true,
+          version: "2.1.5"
+        })
+      ]
     }),
     UnoCss({
       presets: [
