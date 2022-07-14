@@ -18,12 +18,18 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()]
     }),
     UnoCss({
-      presets: [presetAttributify(), presetIcons({
-        scale: 1.5,
-        warn: true
-      }),
-      presetUno()
-      ]
+      presets: [
+        presetAttributify(),
+        presetIcons({
+          scale: 1.5,
+          warn: true
+        }),
+        presetUno()
+      ],
+      rules: [
+        ['bg-black-22', { 'background-color': '#222222' }],
+        ['bg-black-36', { 'background-color': '#1a1a1a' }],
+      ],
     })
   ],
   resolve: {
@@ -32,3 +38,4 @@ export default defineConfig({
     }
   }
 })
+
