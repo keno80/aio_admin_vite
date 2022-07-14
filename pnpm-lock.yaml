@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@iconify-json/carbon': ^1.1.6
+  '@iconify-json/fluent': ^1.1.13
   '@iconify-json/line-md': ^1.1.13
   '@unocss/preset-icons': ^0.44.1
   '@vitejs/plugin-vue': ^2.3.3
@@ -30,6 +31,7 @@ dependencies:
 
 devDependencies:
   '@iconify-json/carbon': 1.1.6
+  '@iconify-json/fluent': 1.1.13
   '@iconify-json/line-md': 1.1.13
   '@unocss/preset-icons': 0.44.1
   '@vitejs/plugin-vue': 2.3.3_vite@2.9.14+vue@3.2.37
@@ -96,6 +98,12 @@ packages:
 
   /@iconify-json/carbon/1.1.6:
     resolution: {integrity: sha512-3a/D7qzqBO6hsDmp6/k2eFfJzL1sw1yCQOq2yr86el2CzgMmQdKYROOyCCDNBxGn+dkkc/Rx1/8OEciakAJcFg==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/fluent/1.1.13:
+    resolution: {integrity: sha512-ddZbJDDFbCnCeS7cja+K0u8Ph/K1N8JKgk0Gd9q9ugDChS1Iw50S4kFqyp1t6Qbw3kINccJGmiF4c7QOyDeqew==}
     dependencies:
       '@iconify/types': 1.1.0
     dev: true
