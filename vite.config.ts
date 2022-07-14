@@ -35,6 +35,7 @@ export default defineConfig({
       rules: [
         ['bg-black-22', { 'background-color': '#222222' }],
         ['bg-black-36', { 'background-color': '#1a1a1a' }],
+        ['shadow-el-light', { 'box-shadow': 'var(--el-box-shadow-light)' }],
       ],
       safelist: 'w-260px w-60px'.split(' ')
     })
