@@ -30,11 +30,19 @@ export default defineConfig({
         ['bg-black-22', { 'background-color': '#222222' }],
         ['bg-black-36', { 'background-color': '#1a1a1a' }],
       ],
+      safelist: 'w-260px w-60px'.split(' ')
     })
   ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src')
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/element-ui.scss" as *;`
+      }
     }
   }
 })
