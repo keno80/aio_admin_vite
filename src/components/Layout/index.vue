@@ -6,10 +6,6 @@ import { appStore } from '@/store/app';
 import { storeToRefs } from 'pinia';
 
 const { sidebarCollapse } = storeToRefs(appStore())
-console.log(sidebarCollapse.value);
-
-
-const width = ref(sidebarCollapse.value ? '60px' : '260px')
 </script>
 
 <template>
