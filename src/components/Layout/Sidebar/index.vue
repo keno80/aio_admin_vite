@@ -12,8 +12,9 @@ const store = appStore()
 
 <template>
   <el-scrollbar class="h-[calc(100vh-32px)]">
-    <el-menu default-active="2" router :collapse="store.sidebarCollapse" class="h-[calc(100vh-32px)]" style="border: none" rounded-4px>
-      <Sider v-for="(routes, index) in allRoutes" :key="index" :routes="routes" />
+    <el-menu default-active="2" router :collapse="store.sidebarCollapse" class="h-[calc(100vh-32px)]"
+      style="border: none" rounded-4px>
+      <Sider v-for="(routes, index) in allRoutes" :key="index" :routes="routes" :hideTitle="store.sidebarCollapse" />
     </el-menu>
   </el-scrollbar>
 </template>
