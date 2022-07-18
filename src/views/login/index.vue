@@ -1,11 +1,13 @@
 <script lang="ts" setup>
+import {useRouter} from 'vue-router'
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 
+const router = useRouter()
 const loginFormRef = ref<FormInstance>()
 const loginForm = reactive<VIEW.LoginForm>({
-  username: '',
-  password: ''
+  username: 'admin',
+  password: '123456'
 })
 
 const rules = reactive<FormRules>({
@@ -17,12 +19,17 @@ const rules = reactive<FormRules>({
   ]
 })
 
+const btnLoading = ref(false)
+
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
   await formEl.validate(valid => {
+  btnLoading.value = true
     if (valid) {
-      console.log('success');
-
+      setTimeout(() => {
+        btnLoading.value = false
+        router.push('/')
+      }, 2000)
     }
   })
 }
@@ -49,7 +56,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" w-full mt-14px size="large" @click="submitForm(loginFormRef)">登录</el-button>
+          <el-button type="primary" w-full mt-14px size="large" @click="submitForm(loginFormRef)" :loading="btnLoading">登录</el-button>
         </el-form-item>
       </el-form>
     </div>

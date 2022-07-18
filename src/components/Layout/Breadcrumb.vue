@@ -10,8 +10,6 @@ let breadcrumbItem = reactive<VIEW.Breadcrumb>({
 })
 
 watch(route, (val) => {
-  console.log(val);
-
   handleBreadcrumb(val);
 })
 
