@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { toggleDark } from '@/composables/dark'
 import { appStore } from '@/store/app';
 import { storeToRefs } from 'pinia';
-import Breadcrumb from './Breadcrumb.vue';
+import TagsView from './TagsView/index.vue';
 
 const { sidebarCollapse } = storeToRefs(appStore())
 const isFull = ref<Boolean>(false)
@@ -33,9 +33,7 @@ const fullScreen = () => {
           <div :class="[sidebarCollapse ? 'i-line-md:menu-fold-right' : 'i-line-md:menu-fold-left']" h10 cursor-pointer
             hover:text-indigo @click="handleSidebarCollapse()"></div>
         </div>
-        <div bg-white dark:bg-black-22 px-20px rounded-4px h-10 flex items-center shadow-el-light>
-          <Breadcrumb />
-        </div>
+        <TagsView />
       </div>
       <div class="right" bg-white dark:bg-black-22 ml-auto h-40px rounded-4px flex shadow-el-light>
         <div :class="[isFull ? 'i-fluent:full-screen-minimize-24-filled' : 'i-fluent:full-screen-maximize-24-filled']"
