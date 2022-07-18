@@ -12,16 +12,17 @@ const props = defineProps({
 })
 
 const routes = props.routes
+const { children } = routes
 
 </script>
 
 <template>
-  <template v-if="routes.children.length <= 1">
+  <template v-if="children.length <= 1">
     <template v-if="routes.meta.hidden !== true">
-      <el-menu-item :index="props.routes.path">
-        <div :class="[routes.children.length !== 0 ? routes.children[0].meta.icon : routes.meta.icon]" px-2></div>
+      <el-menu-item :index="children[0].path">
+        <div :class="[children.length !== 0 ? children[0].meta.icon : routes.meta.icon]" px-2></div>
         <span v-show="!props.hideTitle" overflow-hidden>
-          {{ routes.children.length !== 0 ? routes.children[0].meta.title : routes.meta.title }}
+          {{ children.length !== 0 ? children[0].meta.title : routes.meta.title }}
         </span>
       </el-menu-item>
     </template>
