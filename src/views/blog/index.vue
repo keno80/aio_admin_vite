@@ -1,4 +1,5 @@
 <script setup lang="ts">
+console.log('enter');
 
 </script>
 

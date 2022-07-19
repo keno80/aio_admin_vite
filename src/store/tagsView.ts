@@ -13,10 +13,13 @@ export const tagStore = defineStore('tagStore', {
   },
   getters: {},
   actions: {
+    setCommon(tags: string[]) {
+      this.tags = tags
+      sessionStorage.tags = JSON.stringify(tags)
+    },
     addTag(tag: { path: string, title: string }) {
       if (this.tags.some((item: { path: string }) => item.path === tag.path)) return
-      this.tags.push(tag)
-      sessionStorage.tags = JSON.stringify(this.tags)
+      this.setCommon([...this.tags, tag])
     },
     setCurrent(path: string) {
       this.currentTag = path
@@ -28,8 +31,18 @@ export const tagStore = defineStore('tagStore', {
         index > 0 ? router.push(this.tags[index - 1].path) : router.push(this.tags[index + 1].path)
       }
       const restTag = this.tags.filter((tag: { path: string; }) => tag.path !== path)
-      this.tags = restTag
-      sessionStorage.tags = JSON.stringify(restTag)
+      this.setCommon(restTag)
+    },
+    removeOtherTags(path: string) {
+      this.setCommon(this.tags.filter((item: { path: string; }) => item.path === path));
+      if (path !== this.currentTag) {
+        router.push(this.tags[this.tags.length - 1].path)
+      }
+    },
+    removeAll() {
+      this.setCommon([])
+      sessionStorage.currentTag = ''
+      router.push('/')
     }
   }
 })
