@@ -28,6 +28,14 @@ watch(() => route.path, () => {
   handleClickItem(path)
 }, { immediate: true })
 
+watch(() => ContextOptions.show, (val) => {
+  if (val) {
+    document.body.addEventListener('click', hideContext)
+  } else {
+    document.body.removeEventListener('click', hideContext)
+  }
+})
+
 const handleRemove = (path: string) => {
   useTag.removeTag(path)
 }
@@ -40,20 +48,18 @@ const hideContext = () => {
   ContextOptions.show = false
 }
 
-const handleMenu = (e: any, tag: any) => {
-  console.log('event ->', e);
-  console.log('tag ->', tag);
+const handleMenu = async (e: any, path: string) => {
   const { clientX, clientY } = e
-  hideContext()
+  await hideContext()
   Object.assign(ContextOptions, {
     x: clientX,
     y: clientY,
-    path: tag.path,
+    path
   })
-  nextTick(() => {
+  setTimeout(() => {
+    clearTimeout()
     showContext()
   })
-
 }
 
 </script>
@@ -63,15 +69,9 @@ const handleMenu = (e: any, tag: any) => {
     <div class="tags_view" flex>
       <el-tag class="mx-1" size="large" cursor-pointer h-40px :type="useTag.currentTag === tag.path ? '' : 'info'"
         :closable="useTag.tags.length > 1" v-for="tag in useTag.tags" @click="handleClickItem(tag.path)"
-        @close="handleRemove(tag.path)" @contextmenu.prevent="handleMenu($event, tag)">
+        @close="handleRemove(tag.path)" @contextmenu.prevent="handleMenu($event, tag.path)">
         {{ tag.title }}
       </el-tag>
-      <!-- <div :class="[useTag.currentTag === tag.path ? 'bg-indigo' : 'bg-indigo-300']" text-white px-16px rounded-4px h-10
-        flex items-center shadow-el-light cursor-pointer mr-16px v-for="tag in useTag.tags"
-        @click="handleClickItem(tag.path)">
-        <span text-12px>{{ tag.title }}</span>
-        <div i-line-md:remove h-4 mt-1px cursor-pointer @click="handleRemove(tag.path)"></div>
-      </div> -->
     </div>
   </Scroll>
 
