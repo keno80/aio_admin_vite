@@ -25,10 +25,6 @@ export const tagStore = defineStore('tagStore', {
     removeTag(path: string) {
       if (path === this.currentTag) {
         const index = this.tags.findIndex((item: { path: string }) => item.path === path)
-        console.log(index);
-        console.log(this.tags[index - 1].path);
-        
-        
         index > 0 ? router.push(this.tags[index - 1].path) : router.push(this.tags[index + 1].path)
       }
       const restTag = this.tags.filter((tag: { path: string; }) => tag.path !== path)
