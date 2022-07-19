@@ -17,7 +17,11 @@ const { sidebarCollapse } = storeToRefs(appStore())
     <div class="right" flex flex-col flex-1 h-full w-full>
       <Header />
       <div class="content" mx-16px mt-16px mb-60px bg-white dark:bg-black-22 rounded-4px p-3>
-        <router-view />
+        <router-view v-slot="{ Component }">
+          <transition name="el-fade-in-linear">
+            <component :is="Component" />
+          </transition>
+        </router-view>
       </div>
     </div>
   </div>

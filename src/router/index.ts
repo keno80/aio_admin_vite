@@ -1,7 +1,7 @@
 // @unocss-include
 
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Layout from '@/components/Layout/index.vue'
+import Layout from '@/Layout/index.vue'
 
 const routes: RouteRecordRaw[] = [
   {
