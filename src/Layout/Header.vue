@@ -27,7 +27,7 @@ const fullScreen = () => {
 
 <template>
   <div class="header" h-60px>
-    <div class="header-content" flex h-50px mt-20px mx-16px>
+    <div class="header-content" flex h-50px mt-16px mx-16px>
       <div class="left" h-40px mr-16px flex items-center>
         <div bg-white dark:bg-black-22 px-20px rounded-4px mr-16px shadow-el-light>
           <div :class="[sidebarCollapse ? 'i-line-md:menu-fold-right' : 'i-line-md:menu-fold-left']" h10 cursor-pointer
