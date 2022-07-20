@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
-import { appStore } from '@/store/app';
-import { tagStore } from '@/store/tagsView';
+import { appStore } from '@/store/modules/app';
+import { tagStore } from '@/store/modules/tagsView';
 import { ref, watch, computed } from 'vue'
 
 const app = appStore();
@@ -57,7 +57,8 @@ const actions = computed(() => [
   {
     lable: '关闭全部标签',
     key: 'closeAll',
-    icon: 'i-line-md:close-circle'
+    icon: 'i-line-md:close-circle',
+    disabled: tag.tags.length <= 1
   }
 ])
 

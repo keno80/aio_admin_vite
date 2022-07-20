@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router';
-import { appStore } from '@/store/app';
+import { appStore } from '@/store/modules/app';
 import Sider from './sider.vue'
 
 const router = useRouter()

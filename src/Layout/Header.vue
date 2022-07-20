@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { toggleDark } from '@/composables/dark'
-import { appStore } from '@/store/app';
+import { appStore } from '@/store/modules/app';
 import { storeToRefs } from 'pinia';
 import TagsView from './TagsView/index.vue';
 

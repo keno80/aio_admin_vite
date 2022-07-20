@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { tagStore } from '@/store/tagsView'
+import { tagStore } from '@/store/modules/tagsView'
 import Scroll from './scroll.vue'
 import Context from './context.vue'
 
