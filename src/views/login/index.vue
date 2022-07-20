@@ -1,10 +1,13 @@
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
-import { reactive, ref } from 'vue'
+import { useRouter, useRoute, LocationQueryValue } from 'vue-router'
+import { reactive, ref, watch } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
-import api from '@/api/aio/user'
+import { userStore } from '@/store/modules/user'
+import { getToken } from '@/utils/auth'
 
 const router = useRouter()
+const route = useRoute()
+const user = userStore()
 const loginFormRef = ref<FormInstance>()
 const loginForm = reactive<VIEW.LoginForm>({
   username: 'admin',
@@ -21,15 +24,23 @@ const rules = reactive<FormRules>({
 })
 
 const btnLoading = ref(false)
+const redirectPath = ref()
+
+watch(() => route, () => {
+  const { redirect } = route.query
+  if (route.query) {
+    redirectPath.value = redirect
+  }
+
+}, { immediate: true })
 
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  await formEl.validate(valid => {
+  await formEl.validate(async valid => {
     btnLoading.value = true
     if (valid) {
-      api.login(loginForm).then(res => {
-        console.log(res);
-
+      user.handleLogin(loginForm).then(() => {
+        router.replace({ path: redirectPath.value || '/' })
       }).finally(() => {
         btnLoading.value = false
       })
