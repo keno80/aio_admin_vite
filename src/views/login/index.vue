@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import {useRouter} from 'vue-router'
+import { useRouter } from 'vue-router'
 import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
+import api from '@/api/aio/user'
 
 const router = useRouter()
 const loginFormRef = ref<FormInstance>()
@@ -24,12 +25,14 @@ const btnLoading = ref(false)
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
   await formEl.validate(valid => {
-  btnLoading.value = true
+    btnLoading.value = true
     if (valid) {
-      setTimeout(() => {
+      api.login(loginForm).then(res => {
+        console.log(res);
+
+      }).finally(() => {
         btnLoading.value = false
-        router.push('/')
-      }, 2000)
+      })
     }
   })
 }
@@ -56,7 +59,8 @@ const submitForm = async (formEl: FormInstance | undefined) => {
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" w-full mt-14px size="large" @click="submitForm(loginFormRef)" :loading="btnLoading">登录</el-button>
+          <el-button type="primary" w-full mt-14px size="large" @click="submitForm(loginFormRef)" :loading="btnLoading">
+            登录</el-button>
         </el-form-item>
       </el-form>
     </div>
