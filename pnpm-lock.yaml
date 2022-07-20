@@ -4,6 +4,7 @@ specifiers:
   '@iconify-json/carbon': ^1.1.6
   '@iconify-json/fluent': ^1.1.13
   '@iconify-json/line-md': ^1.1.13
+  '@types/node': ^18.0.6
   '@unocss/preset-icons': ^0.44.1
   '@vitejs/plugin-vue': ^2.3.3
   '@vueuse/core': ^8.9.2
@@ -33,6 +34,7 @@ devDependencies:
   '@iconify-json/carbon': 1.1.6
   '@iconify-json/fluent': 1.1.13
   '@iconify-json/line-md': 1.1.13
+  '@types/node': 18.0.6
   '@unocss/preset-icons': 0.44.1
   '@vitejs/plugin-vue': 2.3.3_vite@2.9.14+vue@3.2.37
   typescript: 4.7.4
@@ -177,6 +179,10 @@ packages:
   /@types/lodash/4.14.182:
     resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
     dev: false
+
+  /@types/node/18.0.6:
+    resolution: {integrity: sha512-/xUq6H2aQm261exT6iZTMifUySEt4GR5KX8eYyY+C4MSNPqSh9oNIP7tz2GLKTlFaiBbgZNxffoR3CVRG+cljw==}
+    dev: true
 
   /@types/web-bluetooth/0.0.14:
     resolution: {integrity: sha512-5d2RhCard1nQUC3aHcq/gHzWYO6K0WJmAbjO7mQJgCQKtZpgXxv1rOM6O/dBDhDYYVutk1sciOgNSe+5YyfM8A==}
