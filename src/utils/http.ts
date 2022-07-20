@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import { getToken } from './auth'
+import 'element-plus/es/components/message/style/css'
 
 const errorEmits = (message: string, type: any) => {
   ElMessage({
@@ -19,7 +20,7 @@ instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlenco
 instance.interceptors.request.use(config => {
   if (config && config.headers) {
     if (getToken()) {
-      config.headers.Authorization = getToken()
+      config.headers.Authorization = `Bearer ${getToken()}`
     }
   }
   return config

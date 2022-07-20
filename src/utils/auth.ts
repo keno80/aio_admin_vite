@@ -5,3 +5,7 @@ export const getToken = () => {
 export const setToken = (token: string) => {
   localStorage.aioToken = token
 }
+
+export const removeToken = () => {
+  localStorage.removeItem('aioToken')
+}
