@@ -3,7 +3,8 @@ import { ref } from 'vue';
 import { toggleDark } from '@/composables/dark'
 import { appStore } from '@/store/modules/app';
 import { storeToRefs } from 'pinia';
-import TagsView from './TagsView/index.vue';
+import TagsView from '../TagsView/index.vue';
+import Avatar from './avatar.vue'
 
 const { sidebarCollapse } = storeToRefs(appStore())
 const isFull = ref<Boolean>(false)
@@ -35,11 +36,12 @@ const fullScreen = () => {
         </div>
         <TagsView />
       </div>
-      <div class="right" bg-white dark:bg-black-22 ml-auto h-40px rounded-4px flex shadow-el-light>
+      <div class="right" bg-white dark:bg-black-22 ml-auto h-40px rounded-4px flex shadow-el-light items-center>
         <div :class="[isFull ? 'i-fluent:full-screen-minimize-24-filled' : 'i-fluent:full-screen-maximize-24-filled']"
           cursor-pointer hover:text-indigo @click="fullScreen()" style="height: 2.5em" mx-3></div>
         <div i-line-md:sunny-outline-twotone-loop dark:i-line-md-moon-twotone cursor-pointer hover:text-indigo
           @click="toggleDark()" style="height: 2.5em" mx-3></div>
+        <Avatar/>
       </div>
     </div>
 

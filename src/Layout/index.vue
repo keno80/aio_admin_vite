@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Sidebar from './Sidebar/index.vue'
-import Header from './Header.vue'
+import Header from './Header/index.vue'
 import { appStore } from '@/store/modules/app';
 
 const app = appStore()
