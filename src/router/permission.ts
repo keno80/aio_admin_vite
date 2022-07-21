@@ -23,10 +23,12 @@ router.beforeEach(async (to, from, next) => {
         try {
           const roles: any = await user.getUserInfo()
 
-          const accessRoutes = await permission.generateRoutes(roles)
+          const accessRoutes = permission.generateRoutes(roles)
 
-          router.addRoute(accessRoutes)
-          
+          accessRoutes.forEach((route: any) => {
+            !router.hasRoute(route.name) && router.addRoute(route)
+          })
+
           next({ ...to, replace: true })
         } catch (err) {
           console.log(err);
@@ -34,13 +36,15 @@ router.beforeEach(async (to, from, next) => {
       }
     }
   } else {
-    if (WHITE_LIST.includes(to.path)) {
-      next()
-    } else {
-      next({
-        path: '/login',
-        query: { ...to.query, redirect: to.path }
-      })
-    }
+    // user.handleLogout().then(() => {
+      if (WHITE_LIST.includes(to.path)) {
+        next()
+      } else {
+        next({
+          path: '/login',
+          query: { ...to.query, redirect: to.path }
+        })
+      }
+    // })
   }
 })

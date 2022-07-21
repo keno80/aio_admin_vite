@@ -41,6 +41,7 @@ export const userStore = defineStore("userStore", {
 
           resolve(roles)
         }).catch(err => {
+          this.handleLogout()
           reject(err)
         })
       })
