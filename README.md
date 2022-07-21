@@ -24,7 +24,7 @@
 - 🦊 集成多环境配置，dev、prod 🦊
 - 🍍 集成 `pinia`，vuex 的替代方案 🍍
 - 🐼 集成 `unplugin` 插件，你只管写，剩下的交给它 🐼
-- 🦄 集成 `iconify` 图标，支持自定义 svg 图标, 优雅使用icon 🦄
+- 🦄 集成 `iconify` 图标, 优雅使用icon 🦄
 - 🦁 集成 `unocss`，antfu 开源的原子化 css 解决方案，非常好用 🦁
 
 ### 预览
