@@ -19,6 +19,8 @@ export const tagStore = defineStore('tagStore', {
     },
     addTag(tag: { path: string, title: string }) {
       if (this.tags.some((item: { path: string }) => item.path === tag.path)) return
+      if (tag.path === '/login') return
+      
       this.setCommon([...this.tags, tag])
     },
     setCurrent(path: string) {
@@ -42,7 +44,6 @@ export const tagStore = defineStore('tagStore', {
     removeAll() {
       this.setCommon([])
       sessionStorage.currentTag = ''
-      router.push('/')
     }
   }
 })
