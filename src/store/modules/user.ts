@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { login, userInfo } from '@/api/blog/user'
 import { tagStore } from '@/store/modules/tagsView'
 import { setToken, getToken, removeToken } from "@/utils/auth";
+import router from "@/router";
 
 
 export const userStore = defineStore("userStore", {
@@ -52,6 +53,7 @@ export const userStore = defineStore("userStore", {
         removeToken()
         this.role = []
         this.username = ''
+        router.push('/login')
       })
     }
   }
