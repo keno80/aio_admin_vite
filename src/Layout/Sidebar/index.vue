@@ -2,13 +2,16 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router';
 import { appStore } from '@/store/modules/app';
+import { permissionStore } from '@/store/modules/permission';
 import Sider from './sider.vue'
 
 const router = useRouter()
 const route = useRoute()
-const allRoutes = computed(() => router.options.routes)
-const currentRoute = computed(() => route.path)
+// const allRoutes = computed(() => router.options.routes)
 const store = appStore()
+const permission = permissionStore()
+const currentRoute = computed(() => route.path)
+const allRoutes = computed(() => permission.routes) 
 
 </script>
 

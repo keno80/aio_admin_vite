@@ -19,7 +19,7 @@ instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlenco
 instance.interceptors.request.use(config => {
   if (config && config.headers) {
     if (getToken()) {
-      config.headers.Authorization = getToken()
+      config.headers.Authorization = `Bearer ${getToken()}`
     }
   }
   return config

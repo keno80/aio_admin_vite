@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import '@/router/permission'
+
 import 'uno.css'
 // import '@/styles/element-ui.scss'
 import 'element-plus/theme-chalk/dark/css-vars.css'
