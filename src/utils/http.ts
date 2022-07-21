@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import { getToken } from './auth'
-import 'element-plus/es/components/message/style/css'
 
 const errorEmits = (message: string, type: any) => {
   ElMessage({
